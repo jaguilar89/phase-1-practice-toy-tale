@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   function updateLikes() {
     let id = event.target.id;
-    let currentLikes = event.target.parentNode.childNodes[2].textContent[0]
+    let currentLikes = event.target.parentNode.childNodes[2].textContent.split(' ')[0]
     let newLikes = Number(currentLikes) + 1
     const PATCH = {
       method: 'PATCH',
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "likes": newLikes
       })
     };
-    
+
     fetch(`${endpoint}/${id}`, PATCH)
       .then(res => res.json())
       .then(toy => {
